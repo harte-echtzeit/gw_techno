@@ -7,16 +7,17 @@ let tilt = pF "tilt"
 -- >>>>>>>>>>>>>   DRUMS
 
 -- kick drum
-d3 $ s "gw_cut:0*4"
-  # grain 0.4 0.1
+d3 $ s "gw_cut:1"
+  # grain 0.42 0.1
   # tilt 0.01
-  # speed "-1.0"
-  # gain 0.8
+  # speed "<-0.8 -0.9 -1 -1.1 -1.2>"
+  -- # speed "-1"
+  # gain 1
   -- more like an acid drum machine
-  # shape "0.8"
+  -- # shape "<0.2 0.4 0.6 0.8 0.9>"
   -- # note "a5 c6 b5 h6"
   -- some spice -> reverb
-  -- # room 0.05 # sz 0.2
+  # room 0.05 # sz 0.2
 
 
 d1 $ fast 1
@@ -25,23 +26,26 @@ d1 $ fast 1
   $ splice 32 "16 [15 16] 15"
    $ s "<gw_cut:5 gw_cut:3>"
    # speed "1 1.2 1.4"
-  # bpf (slow 2 $ range 400 800 sine) # bpq 23
+   # shape 0.6
+  # bpf (slow 2 $ range 400 800 sine) # bpq "<5 10 15 23 42>"
   -- # hpf 2000
   # lpf 1200
-  # octer 0.3
+  # octer 0.1
   # tilt 0.05
  
 -- dirty bass drum
-d1 $ s "gw_cut:1*4"
-  # grain 0.44 0.15
-  # speed "-1.2"
-  # gain 1
-  # octer 0.1
+d1 $ s "gw_cut:1"
+  # grain 0.42 0.1
+  # speed "-1"
+  # gain 0.8
+  -- # octer "<0.1 0.3 0.5 0.7 0.9>"
+  # octer 0.4
+  # octersub "<1 2 4 6 8>"
   -- # smear 0.1
   # waveloss 34
   # octave 6
   # shape "0.2"
-  # vowel "e"
+  # vowel "u"
 
 
 hush
@@ -49,27 +53,30 @@ hush
 d2 $ n "1*4" # s "808sd" # gain 0.9
 
 -- snare
-d3 $ superimpose ((# coarse 1) . (# octer 1))
+d3 -- $ superimpose ((# coarse 1) . (# octer 1))
   $ s "gw_raw:1*4"
   # grain 0.2 0.02
-  # speed "-0.6"
+  # speed "<-0.6 -0.8 -1 -1.2>"
   # gain 0.8
   # hpf 100
   # waveloss 23
-  # vowel "u"
+  # vowel "e"
   # cut 1
-  # legato 0.12
-  # shape 0.4
+  # legato 0.08
+  -- # shape 0.2
+  # tilt 0.01
   -- # binshift 0.1 
 
 -- hats
-d7 $ fast 4
+d7 $ fast 2
   $ n "1 [3 4]/2 ~ 6" # s "gw_raw"
   # grain 0.4 0.05
   # bpf 800
   # tilt 0.01
   # note "a6"
-  # speed "-2.5 -1.8 -3"
+  -- # speed "-2.5 -5.8 ~ -3"
+  # speed "<-1 -2 -3 -4 -5 -6>"
+  # gain 1.5
 
 -- more hats
 
@@ -82,7 +89,8 @@ d8 $ fast 2
   # note "[d7 a7 e7 f7, [f7, e7] e7 f7 a7]"
   # cut 1
   # hpf 700
-  # gain (range 0.3 0.46 $ perlin)
+  # gain 0.8
+  -- # gain (range 0.3 0.46 $ perlin)
   -- # room 0.05 # sz 0.8
 
 
