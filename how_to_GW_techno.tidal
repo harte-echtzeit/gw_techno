@@ -80,7 +80,7 @@ d7 $ fast 2
 
 -- more hats
 
-d8 $ fast 2
+d8 $ fast 1
   $ every 2 (rot (irand 4))
   $ n "1 [3 5] ~ 6" # s "gw_raw"
   # grain 0.4 0.2
@@ -96,18 +96,19 @@ d8 $ fast 2
 
 -- mysterious drone background
 
-  d2 $ slow 2 $ note "a7 g7 f7 d7"
+  d4 $ slow 2 $ note "a7 g7 f7 d7"
   # s "gw_raw" # n "1..8"
   # grain 0.3 0.2
   # tilt 0.1
   # bpf 600
   # lpf 1000
   # hpf 100
-  # speed "<-0.2 -0.1 -0.15 -0.2>"
-  # timescale 4
-  # room 0.1
-  # smear (slow 8 $ range 0 1 $ saw)
-  # gain 0.4
+  # speed "<-0.2 -0.12 -0.15 -0.2>"
+  # timescale 6
+  # room 0.05 # sz 0.3
+  # djf 0.3
+  -- # smear (slow 8 $ range 0 1 $ saw)
+  # gain 1.4
 
 
 -- gong-like background
@@ -116,28 +117,29 @@ d3 $ slow 2
   $ note "4 7 4 [4 5] ~ 4 5 6"
   # s "gw_raw*8" # n "1..8" # octave 7
   # grain 0.4 0.2
-  # tilt 0.01
+  # tilt 0.1
   -- # cut 1
   # speed "1.4"
   # shape 0.5
   -- # squiz 5
   -- # coarse 4
   # vowel "o a u"
-  # djf 0.2
+  # djf 0.15
   # tsdelay 30
-  # delay 0.3
-  # pan perlin
+  # delay 0.5
+  # gain 1.4
+  -- # pan perlin
 
 -- fast background
-d4 $ fast 4
+  d4 $ fast 4
   $ n "2 1 1 0"
   # s "gw_cut"
   # grain 0.5 0.05
   # hpf 200
-  # gain 0.7
+  # gain 0.65
   -- add some spice and variety
   -- # comb 0.1
-  -- # squiz 2 -- some spice
+  # squiz 2 -- some spice
   # vowel "e [a|o]"
  
 -- get a kind of bass line going...
@@ -149,7 +151,7 @@ d3 $ fast 4
   # shape "0.8" -- !!! adjust GAIN down!
   # legato 1
   # djf (slow 4 $ range 0.4 0.6 sine)
-  # pan perlin
+  -- # pan perlin
   -- # comb "0.03 0.04"
   -- # vowel "a u [i|e] u"
   -- some dirt! =)
@@ -165,11 +167,11 @@ d4 $ s ("gw_cut:2(11,16)")
   # shape "<0.9 0.6 0.7>"
   -- # squiz "3 5 1 4"
   -- # waveloss "10 .. 50"
-  # gain 0.35
+  # gain 0.9
   
 -- ALT SYNTH
 d3 $ echo 4 0.4 0.6
-  $ jux rev -- thanks yaxu ;-)
+  -- $ jux rev -- thanks yaxu ;-)
   -- $ layer [degradeBy 0.1, scramble 3] -- > for FUCK-UP
   -- $ sometimes ((jux rev). (# pan (fast 16 $ sine)))
   $ s ("gw_cut:2(5,16)" <> "gw_cut:3(11,16)")
@@ -182,8 +184,8 @@ d3 $ echo 4 0.4 0.6
   -- # krush "2 1 3"
   -- # djf rand
   -- # comb "0.3 0.5 0.5"
-  -- # gain 0.3 -- Start 0.2 MAX 0.6
-  # gain "0.4 0.3 0.2" -- # gain "0.6 0.9 0.7"
+  # gain 0.8 -- Start 0.2 MAX 0.6
+  -- # gain "0.4 0.3 0.2" -- # gain "0.6 0.9 0.7"
 
 
 -- a slow drone that run a long time...maybe add more randomness here!
@@ -198,7 +200,7 @@ d2 $ slow 2
   # speed "0.8"
   # octave 6
   # binshift (slow 2 $ range 0.1 0.4 $ sine)
-  # gain 1
+  # gain 1.2
   -- # legato 1
   -- # lpf 1000
   # room 0.1
